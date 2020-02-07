@@ -10,23 +10,6 @@ import org.junit.jupiter.api.Test;
 
 class WindowsExplorerFileNameComparatorTest {
 
-    /**
-     * This test class makes sense only on windows.
-     *
-     * @implNote used https://stackoverflow.com/a/17506150/4494577 for determining the OS
-     */
-    @BeforeAll
-    static void verifyThatWeAreOnWindows() {
-        String operatingSystem = System
-            .getProperty("os.name", "unknown")
-            .toLowerCase(Locale.ROOT);
-
-        if (!operatingSystem.contains("win")) {
-            throw new IllegalStateException("This test class is intended for" +
-                " Windows only");
-        }
-    }
-
     private WindowsExplorerFileNameComparator sut;
 
     @BeforeEach
