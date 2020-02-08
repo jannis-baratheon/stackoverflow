@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import org.junit.jupiter.api.Test;
 
-abstract class AbstractDigitsAsStringsComparatorTest extends AbstractComparatorTest {
+abstract class NumericalSortingComparatorTest extends AbstractComparatorTest {
 
     @Test
     void case2() {
@@ -28,7 +28,7 @@ abstract class AbstractDigitsAsStringsComparatorTest extends AbstractComparatorT
                 "1 test --11.jpg",
                 "1 test -12.jpg",
                 "1.jpg",
-                "10.jpg",
-                "2.jpg");
+                "2.jpg",
+                "10.jpg");
     }
 }

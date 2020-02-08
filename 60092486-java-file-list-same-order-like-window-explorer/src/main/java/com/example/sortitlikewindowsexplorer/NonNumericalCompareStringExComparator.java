@@ -2,10 +2,10 @@ package com.example.sortitlikewindowsexplorer;
 
 import com.example.sortitlikewindowsexplorer.winapi.Kernel32;
 
-public class CompareDigitsAsStringsCompareStringExComparator
+public class NonNumericalCompareStringExComparator
     extends CompareStringExComparator {
 
-    public CompareDigitsAsStringsCompareStringExComparator() {
+    public NonNumericalCompareStringExComparator() {
         super(Kernel32.CompareStringExOptionSet.NONE);
     }
 }
