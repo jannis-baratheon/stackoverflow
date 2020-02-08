@@ -1,5 +1,6 @@
 package com.example.sortitlikewindowsexplorer;
 
+import com.example.sortitlikewindowsexplorer.winapi.Kernel32.CompareStringExOption;
 import com.example.sortitlikewindowsexplorer.winapi.Kernel32.CompareStringExOptions;
 import java.util.Comparator;
 import org.junit.jupiter.api.Nested;
@@ -12,7 +13,8 @@ class CompareStringExComparatorTest {
         @Override
         Comparator<String> createComparator() {
             return new CompareStringExComparator(
-                CompareStringExOptions.SORT_DIGITSASNUMBERS);
+                CompareStringExOptions.of(
+                    CompareStringExOption.SORT_DIGITSASNUMBERS));
         }
     }
 
@@ -22,7 +24,8 @@ class CompareStringExComparatorTest {
         @Override
         Comparator<String> createComparator() {
             return new CompareStringExComparator(
-                CompareStringExOptions.SORT_STRINGSORT);
+                CompareStringExOptions.of(
+                    CompareStringExOption.SORT_STRINGSORT));
         }
     }
 }

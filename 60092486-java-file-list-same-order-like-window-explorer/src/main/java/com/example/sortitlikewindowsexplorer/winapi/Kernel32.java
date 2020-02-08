@@ -1,8 +1,11 @@
 package com.example.sortitlikewindowsexplorer.winapi;
 
+import static com.example.sortitlikewindowsexplorer.winapi.JnaTypeUtil.wString;
+
 import com.sun.jna.Pointer;
 import com.sun.jna.WString;
 import com.sun.jna.win32.StdCallLibrary;
+import java.util.EnumSet;
 import java.util.Locale;
 
 /**
@@ -45,8 +48,24 @@ public interface Kernel32 extends StdCallLibrary {
                         Pointer lpReserved,
                         int lParam);
 
+    default int CompareStringEx(LocaleName localeName,
+                                CompareStringExOptions options,
+                                String str1,
+                                String str2) {
+        return CompareStringEx(
+            wString(localeName.getName()),
+            options.getFlags(),
+            wString(str1),
+            str1.length(),
+            wString(str2),
+            str2.length(),
+            Pointer.NULL,
+            Pointer.NULL,
+            0);
+    }
+
     @SuppressWarnings("unused")
-    enum CompareStringExOptions {
+    enum CompareStringExOption {
         NONE(0x00000000),
 
         NORM_IGNORECASE(0x00000001),
@@ -62,7 +81,7 @@ public interface Kernel32 extends StdCallLibrary {
 
         private final int optionMask;
 
-        CompareStringExOptions(int optionMask) {
+        CompareStringExOption(int optionMask) {
             this.optionMask = optionMask;
         }
 
@@ -72,24 +91,47 @@ public interface Kernel32 extends StdCallLibrary {
     }
 
     @SuppressWarnings("unused")
-    class LocaleInfo {
+    class LocaleName {
 
-        public static LocaleInfo USER_DEFAULT = new LocaleInfo((String) null);
-        public static LocaleInfo INVARIANT = new LocaleInfo("");
-        public static LocaleInfo SYSTEM_DEFAULT = new LocaleInfo("!sys-default-locale");
+        public static LocaleName USER_DEFAULT = new LocaleName((String) null);
+        public static LocaleName INVARIANT = new LocaleName("");
+        public static LocaleName SYSTEM_DEFAULT = new LocaleName("!sys-default-locale");
 
         private final String localeName;
 
-        public LocaleInfo(Locale locale) {
+        public LocaleName(Locale locale) {
             localeName = locale.toString();
         }
 
-        private LocaleInfo(String locale) {
+        private LocaleName(String locale) {
             this.localeName = locale;
         }
 
         public String getName() {
             return localeName;
+        }
+    }
+
+    class CompareStringExOptions {
+        public static CompareStringExOptions NONE =
+            of(CompareStringExOption.NONE);
+        private final int flags;
+
+        private CompareStringExOptions(CompareStringExOption first,
+                                       CompareStringExOption... rest) {
+            this.flags = EnumSet.of(first, rest)
+                .stream()
+                .mapToInt(CompareStringExOption::getOptionMask)
+                .reduce(0, (mask, option) -> mask | option);
+        }
+
+        public static CompareStringExOptions of(CompareStringExOption first,
+                                                CompareStringExOption... rest) {
+            return new CompareStringExOptions(first, rest);
+        }
+
+        int getFlags() {
+            return flags;
         }
     }
 }
