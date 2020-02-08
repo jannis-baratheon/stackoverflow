@@ -6,7 +6,6 @@ public class CompareDigitsAsStringsCompareStringExComparator
     extends CompareStringExComparator {
 
     public CompareDigitsAsStringsCompareStringExComparator() {
-        super(Kernel32.CompareStringExOptionSet.of(
-            Kernel32.CompareStringExOption.SORT_STRINGSORT));
+        super(Kernel32.CompareStringExOptionSet.NONE);
     }
 }
