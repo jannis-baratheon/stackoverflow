@@ -39,7 +39,7 @@ abstract class AbstractComparatorTest {
     void compares_simple_strings(String string1,
                                  String string2,
                                  int expectedComparisonResult) {
-        CompareStringExComparator sut = new CompareStringExComparator();
+        Comparator<String> sut = createComparator();
 
         assertThat(sut.compare(string1, string2))
             .isEqualTo(expectedComparisonResult);
