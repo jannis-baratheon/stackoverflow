@@ -4,6 +4,7 @@ import com.example.sortitlikewindowsexplorer.util.BitwiseUtil;
 import com.example.sortitlikewindowsexplorer.winapi.Kernel32;
 import com.example.sortitlikewindowsexplorer.winapi.WinLibs;
 import com.sun.jna.Pointer;
+import com.sun.jna.WString;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -44,11 +45,11 @@ public class CompareStringExComparator implements Comparator<String> {
         int compareStringExComparisonResult =
             WinLibs.kernel32()
                 .CompareStringEx(
-                    localeInfo.getName(),
+                    new WString(localeInfo.getName()),
                     options,
-                    o1,
+                    new WString(o1),
                     o1.length(),
-                    o2,
+                    new WString(o2),
                     o2.length(),
                     Pointer.NULL,
                     Pointer.NULL,

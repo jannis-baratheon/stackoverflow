@@ -1,6 +1,7 @@
 package com.example.sortitlikewindowsexplorer.winapi;
 
 import com.sun.jna.Pointer;
+import com.sun.jna.WString;
 import com.sun.jna.win32.StdCallLibrary;
 import java.util.Locale;
 
@@ -34,11 +35,11 @@ public interface Kernel32 extends StdCallLibrary {
      *
      * @see <a href="https://docs.microsoft.com/en-us/windows/win32/api/stringapiset/nf-stringapiset-comparestringex">CompareStringEx</a>
      */
-    int CompareStringEx(String lpLocaleName,
+    int CompareStringEx(WString lpLocaleName,
                         int dwCmpFlags,
-                        String lpString1,
+                        WString lpString1,
                         int cchCount1,
-                        String lpString2,
+                        WString lpString2,
                         int cchCount2,
                         Pointer lpVersionInformation,
                         Pointer lpReserved,
