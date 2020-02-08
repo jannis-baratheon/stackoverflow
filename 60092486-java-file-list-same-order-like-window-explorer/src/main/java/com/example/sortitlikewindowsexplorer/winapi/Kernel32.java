@@ -17,18 +17,20 @@ public interface Kernel32 extends StdCallLibrary {
 
     /**
      * Native WIN32 string comparing function.
-     * <p>
+     *
+     * <pre>
      * int CompareStringEx(
-     * LPCWSTR                          lpLocaleName,
-     * DWORD                            dwCmpFlags,
-     * _In_NLS_string_(cchCount1)LPCWCH lpString1,
-     * int                              cchCount1,
-     * _In_NLS_string_(cchCount2)LPCWCH lpString2,
-     * int                              cchCount2,
-     * LPNLSVERSIONINFO                 lpVersionInformation,
-     * LPVOID                           lpReserved,
-     * LPARAM                           lParam
+     *     LPCWSTR                          lpLocaleName,
+     *     DWORD                            dwCmpFlags,
+     *     _In_NLS_string_(cchCount1)LPCWCH lpString1,
+     *     int                              cchCount1,
+     *     _In_NLS_string_(cchCount2)LPCWCH lpString2,
+     *     int                              cchCount2,
+     *     LPNLSVERSIONINFO                 lpVersionInformation,
+     *     LPVOID                           lpReserved,
+     *     LPARAM                           lParam
      * );
+     * </pre>
      *
      * @see <a href="https://docs.microsoft.com/en-us/windows/win32/api/stringapiset/nf-stringapiset-comparestringex">CompareStringEx</a>
      */

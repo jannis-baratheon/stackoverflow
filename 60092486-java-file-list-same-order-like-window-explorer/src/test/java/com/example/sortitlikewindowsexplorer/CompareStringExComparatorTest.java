@@ -62,6 +62,24 @@ class CompareStringExComparatorTest {
                 "2.jpg");
     }
 
+    @Test
+    void case3() {
+        CompareStringExComparator sut = new CompareStringExComparator();
+        String[] fileNames = new String[]{
+            "1 test -12.jpg",
+            "1 test --11.jpg",
+            "1 test ---10.jpg"
+        };
+
+        Arrays.sort(fileNames, sut);
+
+        assertThat(fileNames)
+            .containsExactly(
+                "1 test ---10.jpg",
+                "1 test --11.jpg",
+                "1 test -12.jpg");
+    }
+
     @ParameterizedTest
     @CsvSource({
         "a,b,-1",

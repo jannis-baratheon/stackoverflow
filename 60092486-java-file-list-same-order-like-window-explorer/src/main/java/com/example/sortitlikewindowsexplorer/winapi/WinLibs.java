@@ -1,6 +1,6 @@
 package com.example.sortitlikewindowsexplorer.winapi;
 
-import static com.sun.jna.win32.W32APIOptions.DEFAULT_OPTIONS;
+import static com.sun.jna.win32.W32APIOptions.UNICODE_OPTIONS;
 import static java.util.Collections.unmodifiableMap;
 
 import com.sun.jna.Library;
@@ -9,7 +9,7 @@ import java.util.Map;
 
 public final class WinLibs {
     private static final Map<String, Object> OPTIONS =
-        unmodifiableMap(DEFAULT_OPTIONS);
+        unmodifiableMap(UNICODE_OPTIONS);
     private final static Shlwapi SHLWAPI;
     private final static Kernel32 KERNEL32;
 
