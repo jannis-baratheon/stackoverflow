@@ -18,17 +18,12 @@ public class CompareStringExComparator implements Comparator<String> {
         this(DEFAULT_LOCALE_INFO, DEFAULT_OPTIONS);
     }
 
-    public CompareStringExComparator(Kernel32.LocaleName localeName) {
-        this(localeName, DEFAULT_OPTIONS);
-    }
-
     public CompareStringExComparator(Kernel32.CompareStringExOptions options) {
         this(DEFAULT_LOCALE_INFO, options);
     }
 
     public CompareStringExComparator(Kernel32.LocaleName localeName,
                                      Kernel32.CompareStringExOptions options) {
-
         this.localeName = localeName;
         this.options = options;
     }
