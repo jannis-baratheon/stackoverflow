@@ -1,4 +1,4 @@
-package com.example.sortitlikewindowsexplorer;
+package com.example.sortitlikewindowsexplorer.winapi;
 
 import com.sun.jna.win32.StdCallLibrary;
 
